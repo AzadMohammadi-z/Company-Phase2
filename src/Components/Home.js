@@ -5,7 +5,8 @@ import {
     View,
     TouchableOpacity,
     Modal,
-    Alert
+    Alert,
+    TextInput
   } from 'react-native';
 
 class Home extends Component {
@@ -15,7 +16,9 @@ class Home extends Component {
     constructor(props){
         super(props);
         this.state={
-          modalVisible: false
+          modalVisible: false,
+          messages:[],
+          visibilityFilter:'SHOW_ALL_MESSAGES'
         }
       }
       setModalVisible(visible) {
@@ -53,6 +56,17 @@ class Home extends Component {
                       }}>
                       <Text>Hide Modal</Text>
                     </TouchableOpacity>
+                    <View style={{flexDirection:'row' , marginHorizontal:20}}>
+                      <TextInput 
+                      placeholder="add"
+                      style={styles.placeholder}
+                      />
+                      <TouchableOpacity 
+                      onPress={()=> alert('added')}
+                      style={styles.touchableOpacityPlus}>
+                        <Text style={{fontSize:20}}>+</Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </Modal>
            </View>
@@ -78,9 +92,24 @@ const styles = StyleSheet.create({
     modal:{
       flex:1,
       alignItems:'center',
-      justifyContent:'center',
+      flexDirection:'column',
       height:250,
       width:250
+    },
+    placeholder:{
+      flex:1,
+      height:50,
+      padding:5,
+      borderWidth:1,
+      borderColor:'#f2f2e1',
+      backgroundColor:'#eaeaea'
+    },
+    touchableOpacityPlus:{
+      height:50,
+      width:60,
+      alignItems:'center',
+      justifyContent:'center',
+      backgroundColor:'#eaeaea'
     }
    });
  
